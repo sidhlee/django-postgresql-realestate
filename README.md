@@ -52,4 +52,9 @@ pip freeze
 # will show all pip packages installed globally
 ```
 
-### Install Django
+### Project setup with Django
+
+1. Activate venv
+2. Install Django `pip install django`
+3. Create `.gitignore`
+4. Init Git
