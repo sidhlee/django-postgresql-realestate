@@ -60,3 +60,13 @@ pip freeze
 4. Create `.gitignore`
 5. Init Git
 6. Commit
+
+## Django CLI commands
+
+Django creates `manage.py` inside root folder. You can run this file with various options to do server-related tasks.
+
+### Start server
+
+```bash
+python manage.py runserver
+```

@@ -1,4 +1,5 @@
 {
   "python.linting.pylintEnabled": true,
-  "python.linting.enabled": true
+  "python.linting.enabled": true,
+  "workbench.colorTheme": "Darcula Pycharm with Dark GUI"
 }
