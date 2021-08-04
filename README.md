@@ -56,5 +56,7 @@ pip freeze
 
 1. Activate venv
 2. Install Django `pip install django`
-3. Create `.gitignore`
-4. Init Git
+3. Create requirements file `pip freeze > requirements.txt`
+4. Create `.gitignore`
+5. Init Git
+6. Commit
