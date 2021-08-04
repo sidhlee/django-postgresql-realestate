@@ -10,7 +10,7 @@ A code-along repo for the [Udemy course](https://www.udemy.com/course/python-dja
 - You can create a single-value tuple with trailing comma.
 - You can't mutate tuples, but you can `delete` them.
 
-### venv
+## venv
 
 venv is a python module for creating virtual environments.
 
@@ -52,7 +52,7 @@ pip freeze
 # will show all pip packages installed globally
 ```
 
-### Project setup with Django
+## Project setup with Django
 
 1. Activate venv
 2. Install Django `pip install django`
