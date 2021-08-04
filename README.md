@@ -58,8 +58,18 @@ pip freeze
 2. Install Django `pip install django`
 3. Create requirements file `pip freeze > requirements.txt`
 4. Create `.gitignore`
-5. Init Git
-6. Commit
+5. Create `.env` and paste `SECRET_KEY` from `settings.py`
+6. Replace secret key inside `settings.py` with env variable.
+
+   ```python
+   from decouple import config
+
+   # Access value from .env file
+   SECRET_KEY = config('SECRET_KEY')
+   ```
+
+7. Init Git
+8. Commit
 
 ## Django CLI commands
 
@@ -69,4 +79,35 @@ Django creates `manage.py` inside root folder. You can run this file with variou
 
 ```bash
 python manage.py runserver
+```
+
+### Create an app
+
+Django app is a sub-module of a project that can function independently and therefore can be easily used in other projects.
+
+```bash
+python manage.py startapp appname
+```
+
+## Trouble Shoot
+
+### Appending app config to `INSTALLED_APPS` results in `ModuleNotFoundError`
+
+When you're registering your app in `settings.py` you need to add the config after all the pre-installed django apps.
+`settings.py`
+
+```python
+
+INSTALLED_APPS = [
+'django.contrib.admin',
+'django.contrib.auth',
+'django.contrib.contenttypes',
+'django.contrib.sessions',
+'django.contrib.messages',
+'django.contrib.staticfiles',
+# custom apps must come after default apps
+'pages.apps.PagesConfig'
+]
+
+
 ```

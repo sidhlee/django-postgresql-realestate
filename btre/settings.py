@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # custom apps must come after default apps
+    'pages.apps.PagesConfig'
 ]
 
 MIDDLEWARE = [
