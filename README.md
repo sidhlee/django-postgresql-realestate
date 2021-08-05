@@ -111,6 +111,28 @@ INSTALLED_APPS = [
 
 ```
 
+### Prevent prettier from formatting Django-HTML
+
+1. Install Django extension
+2. Add the following to `settings.json`
+
+   ```json
+   "files.associations": {
+      "**/templates/**/*.html": "django-html",
+      "**/templates/**/*": "django-txt",
+      "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+   },
+   "[django-html]": {
+      "editor.quickSuggestions": {
+         "other": true,
+         "comments": true,
+         "strings": true
+      },
+      "editor.defaultFormatter": "vscode.html-language-features"
+   },
+   ```
+
 ## References
 
 - [STATIC_ROOT vs STATIC_URL](https://stackoverflow.com/questions/8687927/difference-between-static-static-url-and-static-root-on-django)
+  \
