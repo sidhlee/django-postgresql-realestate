@@ -121,7 +121,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# The absolute path to the directory where ./manage.py collectstatic will collect static files for deployment
+STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+
+# The URL where the static files in STATIC_ROOT directory are served
 STATIC_URL = '/static/'
+
+# The list of directories where Django will look for static files in addition to static/ directory
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'btre/static')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

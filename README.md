@@ -109,5 +109,8 @@ INSTALLED_APPS = [
 'pages.apps.PagesConfig'
 ]
 
-
 ```
+
+## References
+
+- [STATIC_ROOT vs STATIC_URL](https://stackoverflow.com/questions/8687927/difference-between-static-static-url-and-static-root-on-django)
