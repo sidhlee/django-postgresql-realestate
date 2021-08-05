@@ -4,4 +4,10 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-  return HttpResponse('<h1>Hello Django</h1>')
+  ''' 
+  Renders html inside templates folder
+  '''
+  return render(request, 'pages/index.html')
+
+def about(request):
+  return render(request, 'pages/about.html')

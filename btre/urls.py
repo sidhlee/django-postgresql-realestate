@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # Linking to the urls of the pages app 
     path('',  include('pages.urls')),
     path('admin/', admin.site.urls),
 ]
