@@ -83,11 +83,16 @@ python manage.py runserver
 
 ### Create an app
 
-Django app is a sub-module of a project that can function independently and therefore can be easily used in other projects.
+Django app is a sub-module of a project that can function independently and therefore can be easily re-used in other projects.
 
 ```bash
 python manage.py startapp appname
 ```
+
+Django app can created in order to:
+
+- Create complete MVC - pages, templates, model, controllers, etc..
+- Create just model to be added through admin interface
 
 ### Setting up static Assets
 
@@ -100,6 +105,51 @@ First define the following constants in `/project/settings.py` file:
 Then run `python manage.py collectstatic` to collect all static assets into `STATIC_ROOT`
 
 Django will create `static` folder at the project root and populate it with collected static files as well as assets for Django's admin interface.
+
+## Adding templates to apps
+
+When you create(start) app, Django will populate the app folder with `views.py` file. Inside this file, you will define functions that render pages inside `templates` folder using Django's `render` function.
+
+`pages/views.py`
+
+```python
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+
+def index(request):
+  '''
+  Renders html inside templates folder
+  '''
+  return render(request, 'pages/index.html')
+
+def about(request):
+  return render(request, 'pages/about.html')
+
+
+```
+
+## Connecting app pages
+
+After creating (staring) app and defining render function in `views.py`, you can assign the render functions to the corresponding routes by:
+
+1. Create `urls.py` file inside the app
+2. Create `urlpatterns` assigned to the list of paths connecting views to the routes
+
+`pages/urls.py`
+
+```python
+from django.urls import path
+# import the app's views module and assign it to a specific path
+from . import views
+
+urlpatterns = [
+  # When the request is made to the root path, index function from view's module will run.
+  path('', views.index, name='index'),
+  path('about', views.about, name='about'),
+]
+```
 
 ## Trouble Shoot
 
@@ -147,4 +197,3 @@ INSTALLED_APPS = [
 ## References
 
 - [STATIC_ROOT vs STATIC_URL](https://stackoverflow.com/questions/8687927/difference-between-static-static-url-and-static-root-on-django)
-  \
