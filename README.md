@@ -130,7 +130,7 @@ def about(request):
 
 ```
 
-## Connecting app pages
+## Rendering app templates
 
 After creating (staring) app and defining render function in `views.py`, you can assign the render functions to the corresponding routes by:
 
@@ -149,6 +149,15 @@ urlpatterns = [
   path('', views.index, name='index'),
   path('about', views.about, name='about'),
 ]
+```
+
+## Linking app pages
+
+You can use `url` built-in template tag to return an absolute path to the app page.
+Django will use the value passed as `name` parameter inside `urls.py` of each app.
+
+```html
+<a href="{% url 'index' %}"></a>
 ```
 
 ## Connecting apps to the project
