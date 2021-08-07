@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # custom apps must come after default apps
-    'pages.apps.PagesConfig'
+    'pages.apps.PagesConfig',
+    'listings.apps.ListingsConfig',
+    'realtors.apps.RealtorsConfig'
 ]
 
 MIDDLEWARE = [
@@ -129,7 +131,8 @@ STATIC_URL = '/static/'
 
 # The list of directories where Django will look for additional statics files aside from the static folder of each app installed
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'btre/static')
+    # need to include this path because the static folder is NOT inside installed app.
+    os.path.join(BASE_DIR, 'btre/static')
 ]
 
 # Default primary key field type

@@ -18,6 +18,8 @@ from django.urls import path, include
 
 urlpatterns = [
     # Linking to the urls of the pages app 
+    # path('url', include('app_name.urls'))
     path('',  include('pages.urls')),
+    path('listings/',  include('listings.urls')),
     path('admin/', admin.site.urls),
 ]

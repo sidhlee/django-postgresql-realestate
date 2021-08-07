@@ -151,6 +151,46 @@ urlpatterns = [
 ]
 ```
 
+## Connecting apps to the project
+
+After setting up the app local routes, we can connect apps to the main project by:
+
+1. Installing the app
+   Inside `settings.py`, append the apps you want to install to the `INSTALLED_APPS` list
+
+   ```python
+   INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # custom apps must come after default apps
+    'pages.apps.PagesConfig',
+    'listings.apps.ListingsConfig',
+    ''
+   ]
+   ```
+
+2. Setting up routes
+   include app local routes into the project's `urlpatterns`.
+
+   `btre/urls.py`
+
+   ```python
+   from django.contrib import admin
+   from django.urls import path, include
+
+   urlpatterns = [
+      # Linking to the urls of the pages app
+      path('',  include('pages.urls')),
+      path('listing/',  include('pages.urls')),
+      path('admin/', admin.site.urls),
+   ]
+
+   ```
+
 ## Trouble Shoot
 
 ### Appending app config to `INSTALLED_APPS` results in `ModuleNotFoundError`
