@@ -89,6 +89,18 @@ Django app is a sub-module of a project that can function independently and ther
 python manage.py startapp appname
 ```
 
+### Setting up static Assets
+
+First define the following constants in `/project/settings.py` file:
+
+- STATIC_ROOT - absolute path of the folder where Django will collect all the static assets into
+- STATIC_URL - URL where the static files from STATIC_ROOT will be served
+- STATICFILES_DIRS - The list of paths where Django will look for additional static files aside from each installed app's static folder
+
+Then run `python manage.py collectstatic` to collect all static assets into `STATIC_ROOT`
+
+Django will create `static` folder at the project root and populate it with collected static files as well as assets for Django's admin interface.
+
 ## Trouble Shoot
 
 ### Appending app config to `INSTALLED_APPS` results in `ModuleNotFoundError`
