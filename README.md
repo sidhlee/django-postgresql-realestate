@@ -249,6 +249,32 @@ DATABASES = {
 }
 ```
 
+### Create models
+
+When you install a django app, `models.py` file is created. You can create the model class inside this file that maps into the database table.
+
+```python
+from django.db import models
+from datetime import datetime
+
+class Realtor(models.Model):
+  name = models.CharField(max_length=200)
+  photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
+  description = models.TextField(blank=True)
+  phone = models.CharField(max_length=20)
+  email = models.CharField(max_length=50)
+  is_mvp = models.BooleanField(default=False)
+  hired_date = models.DateTimeField(default=datetime.now, blank=True)
+  def __str__(self):
+    return self.name
+```
+
+After writing the model class, run `makemigrations` option to create the actual migration file. If there's dependency error, install necessary packages.
+
+```bash
+python manage.py makemigrations
+```
+
 ### Run migrations
 
 Django propagates changes to the models to the database with "migration",
@@ -259,6 +285,8 @@ Run the following command to migrate these models into PostgreSQL tables:
 ```bash
 python manage.py migrate
 ```
+
+You can check the tables create in your database via pgAdmin.
 
 ## Trouble Shoot
 
