@@ -200,6 +200,66 @@ After setting up the app local routes, we can connect apps to the main project b
 
    ```
 
+## Using PostgreSQL with Django
+
+### Run db server and create db with Postgres.app
+
+1. Download [Postgres.app](https://postgresapp.com/downloads.html) and follow the instruction on "Installing Postgres.app"
+2. Double click on `postgres` db to start PostreSQL interactive terminal.
+3. Set the password for the user: postgres by:
+
+   ```txt
+   postgres=# \password postgres
+   ```
+
+4. Create database owned by `postgres` user
+   ```txt
+   postgres=# CREATE DATABASE btredb OWNER postgres;
+   ```
+5. Check created db by typing `\l`
+6. Exit by `\q`
+
+### Connect db to pgAdmin
+
+1. Install [pgAdmin](https://www.pgadmin.org/)
+2. Right click on Servers and select Create > Server
+3. Set server name (dbserver), hostname(localhost), Username(postgres), and Password you set for the user, then click on save.
+4. Now dbserver is created under Servers which has btredb you created on postgres prompt.
+5. Right click on btredb then select Property > Security, then add "postgres" as Grantee and check "All" under Privileges. Save to close window.
+
+### Install PostgreSQL adapter and update settings.py
+
+Inside the virtual environment, install [pycopg](https://pypi.org/project/psycopg2/):
+
+```bash
+pip install psycopg2 psycopg2-binary
+```
+
+Now change the default database inside the settings.py
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'btredb',
+        'USER': 'postgres',
+        'PASSWORD': <User Password>,
+        'HOST': 'localhost'
+    }
+}
+```
+
+### Run migrations
+
+Django propagates changes to the models to the database with "migration",
+and there are some built-in admin models that need to be migrated into the database.
+
+Run the following command to migrate these models into PostgreSQL tables:
+
+```bash
+python manage.py migrate
+```
+
 ## Trouble Shoot
 
 ### Appending app config to `INSTALLED_APPS` results in `ModuleNotFoundError`
@@ -246,3 +306,4 @@ INSTALLED_APPS = [
 ## References
 
 - [STATIC_ROOT vs STATIC_URL](https://stackoverflow.com/questions/8687927/difference-between-static-static-url-and-static-root-on-django)
+- [Django Migrations: A Primer](https://realpython.com/django-migrations-a-primer/)
