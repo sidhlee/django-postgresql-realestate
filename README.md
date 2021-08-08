@@ -213,9 +213,11 @@ After setting up the app local routes, we can connect apps to the main project b
    ```
 
 4. Create database owned by `postgres` user
+
    ```txt
    postgres=# CREATE DATABASE btredb OWNER postgres;
    ```
+
 5. Check created db by typing `\l`
 6. Exit by `\q`
 
@@ -287,6 +289,31 @@ python manage.py migrate
 ```
 
 You can check the tables create in your database via pgAdmin.
+
+## Django Admin
+
+### Create super user
+
+In order to login to Django's admin dashboard available at `/admin`, we need to create a staff user (superuser) by running:
+
+```bash
+python manage.py createsuperuser
+# will prompt to enter username, email, and password
+```
+
+### Registering models
+
+You can register app models to create table rows via admin UI.
+
+`realtors/admin.py`
+
+```python
+from django.contrib import admin
+from .models import Realtor
+
+# Register your models here.
+admin.site.register(Realtor)
+```
 
 ## Trouble Shoot
 
