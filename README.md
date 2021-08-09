@@ -169,6 +169,14 @@ You can extend the base template for admin page and add blocks for individual pa
 {% endblock %}
 ```
 
+You can also add `extrastyle` block to add stylesheet for specific template. The style link is pointing to the `/static/css` inside your project folder (`/btre/`).
+
+```jinja
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}
+```
+
 ## Linking app pages
 
 You can use `url` built-in template tag to return an absolute path to the app page.
