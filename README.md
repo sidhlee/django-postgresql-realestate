@@ -106,7 +106,9 @@ Then run `python manage.py collectstatic` to collect all static assets into `STA
 
 Django will create `static` folder at the project root and populate it with collected static files as well as assets for Django's admin interface.
 
-## Adding templates to apps
+## Templating in Django
+
+### Adding templates to apps
 
 When you create(start) app, Django will populate the app folder with `views.py` file. Inside this file, you will define functions that render pages inside `templates` folder using Django's `render` function.
 
@@ -130,7 +132,7 @@ def about(request):
 
 ```
 
-## Rendering app templates
+### Rendering app templates
 
 After creating (staring) app and defining render function in `views.py`, you can assign the render functions to the corresponding routes by:
 
@@ -149,6 +151,22 @@ urlpatterns = [
   path('', views.index, name='index'),
   path('about', views.about, name='about'),
 ]
+```
+
+### Customizing admin page
+
+You can extend the base template for admin page and add blocks for individual partials to overwrite them.
+
+```jinja
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block branding %}
+  <h1 id="head">
+    <img class="brand_img" src="{% static 'img/logo.png' %}" alt="BT Real Estate"  height="50">
+    Admin Area
+  </h1>
+{% endblock %}
 ```
 
 ## Linking app pages
