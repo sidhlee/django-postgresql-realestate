@@ -1,0 +1,38 @@
+:root {
+  --blue: #10284e;
+  --green: #21886d;
+}
+
+#header {
+  height: initial;
+  background: var(--blue);
+  color: white;
+}
+
+#branding #head {
+  color: white;
+}
+
+/* a:link,
+a:visited {
+  color: var(--blue);
+} */
+
+div.breadcrumbs {
+  background: var(--green);
+}
+
+.module caption {
+  background: var(--green);
+}
+
+/* buttons are not as easy to see with theme color */
+/* 
+.button,
+int[type='submit'],
+input[type='button'],
+.submit-row input,
+a.button {
+  background: var(--blue);
+  color: white;
+} */
