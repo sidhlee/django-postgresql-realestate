@@ -5,7 +5,7 @@ from .models import Listing
 
 def index(request):
   # Query rows in descending order by list_date from listings table 
-  listings = Listing.objects.order_by('-list_date')
+  listings = Listing.objects.order_by('-list_date').filter(is_published=True)
 
   # Create new paginator instance with listings data and items per page set to 3
   paginator = Paginator(listings, 6)
