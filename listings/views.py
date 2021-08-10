@@ -4,11 +4,11 @@ from django.core.paginator import EmptyPage, PageNotAnInteger,Paginator
 from .models import Listing
 
 def index(request):
-  # Query all rows from listings table
-  listings = Listing.objects.all()
+  # Query rows in descending order by list_date from listings table 
+  listings = Listing.objects.order_by('-list_date')
 
   # Create new paginator instance with listings data and items per page set to 3
-  paginator = Paginator(listings, 3)
+  paginator = Paginator(listings, 6)
   # Get requested page number
   page_number = request.GET.get('page')
 
