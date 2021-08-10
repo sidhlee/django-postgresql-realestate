@@ -1,13 +1,22 @@
 from django.db import models
 from django.shortcuts import render
+from django.core.paginator import EmptyPage, PageNotAnInteger,Paginator
 from .models import Listing
 
 def index(request):
-  # query all rows from listings table
+  # Query all rows from listings table
   listings = Listing.objects.all()
+
+  # Create new paginator instance with listings data and items per page set to 3
+  paginator = Paginator(listings, 3)
+  # Get requested page number
+  page_number = request.GET.get('page')
+
+  # Get listings for the given page
+  paged_listings = paginator.get_page(page_number)
   
   context = {
-    "listings": listings
+    "listings": paged_listings
   }
 
   return render(request, 'listings/listings.html', context)
