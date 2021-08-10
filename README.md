@@ -177,6 +177,72 @@ You can also add `extrastyle` block to add stylesheet for specific template. The
 {% endblock %}
 ```
 
+### Templating data
+
+We can create the "context" dictionary and pass it to the render function after the template path.
+
+```python
+def index(request):
+  # query all rows from listings table
+  listings = Listing.objects.all()
+
+  context = {
+    "listings": listings
+  }
+
+  return render(request, 'listings/listings.html', context)
+
+```
+
+You can access fields of the foreign table simply with the dot notation.
+
+```text
+ <i class="fas fa-user"></i> {{ listing.realtor.name }}</div>
+```
+
+### Dynamic routes
+
+You can set the dynamic route inside `urls.py` by setting the url param:
+
+```python
+urlpatterns = [
+  path('', views.index, name='listings'),
+  # listing_id is passed to the listing function as second argument
+  path('<int:listing_id>', views.listing, name='listing'),
+  path('search', views.search, name='search'),
+]
+```
+
+Then you take that url param and add to the views function as parameter
+
+```python
+def listing(request, listing_id):
+  return render(request, 'listings/listing.html')
+```
+
+### Django template filter: Humanize
+
+[Humanize](https://docs.djangoproject.com/en/3.2/ref/contrib/humanize/) is the django core app that has many utilities for formatting data inside template. To use Humanize:
+
+1. Include `django.conrib.humanize` in `INSTALLED_APPS` list (settings.py)
+2. Load humanize at the top of the template
+
+   ```text
+   {% extends 'base.html' %}
+   {% load humanize %}
+
+   {% block content %}
+   <section id="showcase-inner" class="py-5 text-white">
+   ```
+
+3. Pipe the raw data into relevant humanize function
+
+```html
+<span class="badge badge-secondary text-white"
+  >${{ listing.price | intcomma }}</span
+>
+```
+
 ## Linking app pages
 
 You can use `url` built-in template tag to return an absolute path to the app page.
@@ -415,6 +481,18 @@ INSTALLED_APPS = [
       "editor.defaultFormatter": "vscode.html-language-features"
    },
    ```
+
+### Pylint 'Listing has no object member' error
+
+Install `pylint-django` and update vscode settings:
+
+```bash
+pip install pylint-django
+```
+
+```json
+{ "python.linting.pylintArgs": ["--load-plugins=pylint_django"] }
+```
 
 ## References
 

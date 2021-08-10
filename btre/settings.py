@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     # custom apps must come after default apps
-    'pages.apps.PagesConfig',
+    'pages.apps.PagesConfig',    
     'listings.apps.ListingsConfig',
-    'realtors.apps.RealtorsConfig'
+    'realtors.apps.RealtorsConfig',    
 ]
 
 MIDDLEWARE = [
