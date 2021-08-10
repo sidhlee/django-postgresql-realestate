@@ -439,6 +439,34 @@ admin.site.register(Listing, ListingAdmin)
 
 ```
 
+### Fetching db records
+
+Django allows you to import installed app's files from any other app. For example you can import listings app's `Listing` model from pages app like so:
+
+'pages/views.py`
+
+```python
+from django.shortcuts import render
+from listings.models import Listing
+```
+
+Then you can call the models method to make queries against the matching table from the database. Usually you add the fetched table to a context dictionary and pass that to the render function.
+
+```python
+def index(request):
+  '''
+  Renders html inside templates folder
+  '''
+  # fetch listings in descending order by list date
+  listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
+
+  context = {
+    'listings': listings
+  }
+  return render(request, 'pages/index.html', context)
+
+```
+
 ## Trouble Shoot
 
 ### Appending app config to `INSTALLED_APPS` results in `ModuleNotFoundError`
