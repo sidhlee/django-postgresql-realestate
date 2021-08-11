@@ -125,3 +125,14 @@ img {
     font-size: 40px;
   }
 }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navbar + section {
+  flex: 1 0 auto;
+}
