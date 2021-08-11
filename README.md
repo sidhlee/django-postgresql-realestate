@@ -640,3 +640,4 @@ pip install pylint-django
 - [STATIC_ROOT vs STATIC_URL](https://stackoverflow.com/questions/8687927/difference-between-static-static-url-and-static-root-on-django)
 - [Django Migrations: A Primer](https://realpython.com/django-migrations-a-primer/)
 - [Django Model field reference](https://docs.djangoproject.com/en/3.2/ref/models/fields/)
+- [Django messages framework](https://docs.djangoproject.com/en/3.2/ref/contrib/messages/)
