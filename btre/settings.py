@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     # custom apps must come after default apps
     'pages.apps.PagesConfig',    
     'listings.apps.ListingsConfig',
-    'realtors.apps.RealtorsConfig',    
+    'realtors.apps.RealtorsConfig',
+    'accounts.apps.AccountsConfig'    
 ]
 
 MIDDLEWARE = [

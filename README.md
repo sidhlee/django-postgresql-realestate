@@ -275,7 +275,7 @@ After setting up the app local routes, we can connect apps to the main project b
    ```
 
 2. Setting up routes
-   include app local routes into the project's `urlpatterns`.
+   You can create `urls.py` inside the app folder and include app local routes into the project's `urlpatterns`.
 
    `btre/urls.py`
 
@@ -466,6 +466,10 @@ def index(request):
   return render(request, 'pages/index.html', context)
 
 ```
+
+## User accounts & Authentication
+
+Django provides authentication out of the box. All the models related to user and permission are already created.
 
 ## Trouble Shoot
 
