@@ -56,3 +56,20 @@ Django proves the messages framework where you can temporarily store messages in
      else:
        return render(request, 'accounts/login.html')
    ```
+
+## Fading out messages
+
+You can use `setTimeout` inside `main.js` to fade out messages after some delay on page load. This works because the message gets added and displayed on the subsequent request and javascript kicks in when the page is reloaded with render or redirect function.
+
+`bre/static/js/main.js`
+
+```js
+const date = new Date();
+document.querySelector('.year').innerHTML = date.getFullYear();
+
+setTimeout(function () {
+  $('#message').fadeOut('slow');
+}, 3000);
+```
+
+Don't forget to run `python manage.py collectstatic` after adding anything to the project's static folder.
