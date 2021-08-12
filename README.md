@@ -576,10 +576,6 @@ def index(request):
 
 ```
 
-## User accounts & Authentication
-
-Django provides authentication out of the box. All the models related to user and permission are already created.
-
 ## Trouble Shoot
 
 ### Appending app config to `INSTALLED_APPS` results in `ModuleNotFoundError`
