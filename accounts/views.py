@@ -6,10 +6,19 @@ from django.contrib.auth.models import User
 
 def login(request):
   if request.method == 'POST':
-    # adding a message to the error level
-    messages.error(request, 'Testing error message')    
-     
-    return redirect('login')
+    username = request.POST['username']
+    password = request.POST['password']
+
+    user = auth.authenticate(username=username, password=password)
+
+    if user is not None:
+      auth.login(request, user)
+      messages.success(request, 'Logged in successfully')
+      return redirect('dashboard')
+    else:
+      messages.error(request, 'Invalid credentials')
+      return redirect('login')
+ 
   else:
     return render(request, 'accounts/login.html')
 
