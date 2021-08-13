@@ -1,6 +1,6 @@
 # Messages Framework in Django
 
-Django proves the messages framework where you can temporarily store messages in one request and retrieve them for display in a subsequent request.
+Django provides the messages framework where you can temporarily store messages in one request and retrieve them to display in a subsequent request.
 
 ## Displaying messages
 

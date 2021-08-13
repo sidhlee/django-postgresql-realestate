@@ -65,7 +65,7 @@ else:
 
 ## Logging in
 
-Django provides method for authentication and logging in.
+Django provides `login` method from `auth` module for authentication and logging in.
 
 ```python
 from django.contrib import messages, auth
@@ -91,7 +91,7 @@ def login(request):
 
 ## Logging out
 
-The user logout should be done with POST request because if you use GET, the browser pre-fetch might make request to the logout link.
+The user logout should be done with POST request because if you use GET, the browser pre-fetch might try to make the request against the logout url.
 
 In Django, logging user out is as simple as calling a method:
 
