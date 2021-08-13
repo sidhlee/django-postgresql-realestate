@@ -157,3 +157,11 @@ MESSAGE_TAGS = {
     # set the string representation of the ERROR message level to 'danger'
     messages.ERROR: 'danger',
 }
+
+# Config for gmail smtp server
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER=config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
