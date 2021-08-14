@@ -73,3 +73,7 @@ setTimeout(function () {
 ```
 
 Don't forget to run `python manage.py collectstatic` after adding anything to the project's static folder.
+
+## Reference
+
+- [Django messages framework](https://docs.djangoproject.com/en/3.2/ref/contrib/messages/)
